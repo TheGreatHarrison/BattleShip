@@ -1,5 +1,17 @@
 # Prerequisites
 *.d
+/build/
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+CMakeTmp/
+compile_commands.json
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+CTestTestfile.cmake.tmp
+
+*.json
 
 # Compiled Object files
 *.slo
