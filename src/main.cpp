@@ -5,8 +5,8 @@
 
 void PrintBoard(char** board) 
 {
-    std::cout << "@  ";
-    for (int p = 1 ; p <= 10; p++)
+    std::cout << "@  "; // Top corner 
+    for (int p = 1 ; p <= 10; p++) //  Print numbers along the top
     {
         std::cout << p << " ";
     }
@@ -14,12 +14,12 @@ void PrintBoard(char** board)
 
     for (int i = 0; i < 10; ++i) {
 
-        std::cout << i+1 << " ";
-        if (i != 9) {
+        std::cout << i+1 << " "; //  Print the numbers along the left edge
+        if (i != 9) { // Odd spacing for when 2 char 10 is put on baord and it throws out the lines
             std::cout << " ";
         }
         for (int j = 0; j < 10; ++j) {
-            std::cout << board[i][j] << " ";
+            std::cout << board[i][j] << " "; 
         }
         std::cout << "\n";
     }
