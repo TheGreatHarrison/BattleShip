@@ -5,7 +5,19 @@
 
 void PrintBoard(char** board) 
 {
+    std::cout << "@  ";
+    for (int p = 1 ; p <= 10; p++)
+    {
+        std::cout << p << " ";
+    }
+    std::cout << "\n";
+
     for (int i = 0; i < 10; ++i) {
+
+        std::cout << i+1 << " ";
+        if (i != 9) {
+            std::cout << " ";
+        }
         for (int j = 0; j < 10; ++j) {
             std::cout << board[i][j] << " ";
         }
