@@ -63,15 +63,15 @@ int checkBoat (Boat boat, char** board)
 Boat PlaceShip(int size, char** board)
 {
     int x=0,y=0,ori=0;
-    std::cout << "You are placing Boat of size " << size << "\n";
-    std::cout << "Input your x y coor: ";
+    std::cout << "Place Boat " << size << ": \n";
+    std::cout << "Input your X Y coord: ";
     std::cin >> x >> y;
-    std::cout <<"Input oritentation 1 = vertical 0 = horizontal: ";
+    std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
     std::cin >> ori;
     Boat boat(x, y, size, ori);
     if (checkBoat(boat, board) == 0)
     {
-        std::cout << "invalid placement\n";
+        std::cout << "Invalid Placement - Try again\n";
         return PlaceShip(size, board);
     } else {
         return boat;
