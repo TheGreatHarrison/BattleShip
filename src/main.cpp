@@ -2,6 +2,8 @@
 #include <iostream>
 
 #include "../inc/boat.h"
+#include "../inc/Player.h"
+#include <array>
 
 void PrintBoard(char** board) 
 {
@@ -78,7 +80,7 @@ Boat PlaceShip(int size, char** board)
     }
 }
 
-char** EstablishBoard()
+char** EstablishBoard() // Make empty board 
 {
     char** array = new char*[10];  // Allocate memory for rows
     for (int i = 0; i < 10; ++i) {
@@ -92,15 +94,20 @@ char** EstablishBoard()
 
 int main() {
 
-    char** PlayerBoard;
-    PlayerBoard = EstablishBoard();
+    char** playerDefensiveBoard;
+    char** playerAttackBoard;
+    playerDefensiveBoard = EstablishBoard();
+    playerAttackBoard = EstablishBoard();
     
     printf("Welcome to Battle Ships\n");
     printf("Place your boats\n");
-    Boat boat2 = PlaceShip(2, PlayerBoard);
-    Boat boat3 = PlaceShip(3, PlayerBoard);
-    Boat boat4 = PlaceShip(4, PlayerBoard);
-    Boat boat5 = PlaceShip(5, PlayerBoard);
+    Boat boat2 = PlaceShip(2, playerDefensiveBoard);
+    Boat boat3 = PlaceShip(3, playerDefensiveBoard);
+    Boat boat4 = PlaceShip(4, playerDefensiveBoard);
+    Boat boat5 = PlaceShip(5, playerDefensiveBoard);
+    std::array<Boat, 4> boatArr =  {boat2, boat3, boat4, boat5};
+
+    Player player(playerDefensiveBoard, playerAttackBoard, boatArr);
 
     return 0;
 }
