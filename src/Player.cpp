@@ -24,3 +24,7 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
     Boat getBoat(std::array<Boat,4> &boatArr, int number) {
         return boatArr[number-2];
     }
+
+    int Player::getHealth() {
+        return health;
+    }

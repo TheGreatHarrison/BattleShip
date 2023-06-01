@@ -15,6 +15,7 @@ public:
 
     // Accessor methods
     int takeShot();
+    int getHealth();
     char** getPlayerBoard();
     char** getEnemyBoard();
     int defendShot(int x, int y);

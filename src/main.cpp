@@ -28,7 +28,7 @@ void PrintBoard(char** board)
     }
 }
 
-int checkBoat (Boat boat, char** board)
+int checkBoat (Boat boat, char** board, int pc)
 {
     int x=0, y=0, ori=0, size=0;
     x = boat.getX();
@@ -59,7 +59,9 @@ int checkBoat (Boat boat, char** board)
         }
         board[y-1][x-1] = '@'; 
     }
-    PrintBoard(board);
+    if (pc == 0) {
+        PrintBoard(board);
+    }
     return 1;
 }
 
@@ -72,7 +74,7 @@ Boat PlaceShip(int size, char** board)
     std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
     std::cin >> ori;
     Boat boat(x, y, size, ori);
-    if (checkBoat(boat, board) == 0)
+    if (checkBoat(boat, board, 0) == 0)
     {
         std::cout << "Invalid Placement - Try again\n";
         return PlaceShip(size, board);
@@ -101,7 +103,7 @@ Boat PlacePCShip(int size, char ** board) {
     std::cout << x << " " << y << " " << ori << "\n"; 
     ori = rand() % 2;
     Boat boat(x, y, size, ori);
-    while (checkBoat(boat, board) == 0) {
+    while (checkBoat(boat, board, 1) == 0) {
         int x = rand() % 10 + 1;
         int y = rand() % 10 + 1;
         int ori = rand() % 2;
@@ -139,7 +141,11 @@ int main() {
     Boat pcBoat3 = PlacePCShip(3, pcDefensiveBoard);
     Boat pcBoat4 = PlacePCShip(4, pcDefensiveBoard);
     Boat pcBoat5 = PlacePCShip(5, pcDefensiveBoard);
-    PrintBoard(pcDefensiveBoard);
+    std::array<Boat, 4> pcBoatArr =  {pcBoat2, pcBoat3, pcBoat4, pcBoat5};
+
+    Player pc(pcDefensiveBoard, pcAttackBoard, pcBoatArr);
+
+    // game play?
 
     return 0;
 }
