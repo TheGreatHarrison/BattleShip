@@ -14,9 +14,12 @@ public:
 
     // Accessor methods
     int getX();
+    void setX(int x);
     int getY();
+    void setY(int Y);
     int getHealth();
     int getOri();
+    void setOri(int ori);
     int getSize();
 
 };

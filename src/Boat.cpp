@@ -9,8 +9,16 @@ Boat::Boat(int x, int y, int size, int ori)
         return x;
     }
 
+    void Boat::setX(int x) {
+        this->x = x;
+    }
+
     int Boat::getY() {
         return y;
+    }
+
+    void Boat::setY(int y) {
+        this->y = y;
     }
 
     int Boat::getHealth() {
@@ -19,6 +27,10 @@ Boat::Boat(int x, int y, int size, int ori)
 
     int Boat::getOri() {
         return ori;
+    }
+
+    void Boat::setOri(int ori) {
+        this->ori = ori;
     }
 
     int Boat::getSize() {

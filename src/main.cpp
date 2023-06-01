@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <cstdlib>
 
 #include "../inc/boat.h"
 #include "../inc/Player.h"
@@ -37,7 +38,7 @@ int checkBoat (Boat boat, char** board)
 
     if (ori == 0 && (x+size > 9 || x < 1)) {
         return 0;
-    } else if (ori == 2 && (y+size > 9 || y < 1)) {
+    } else if (ori == 1 && (y+size > 9 || y < 1)) {
         return 0;
     } else if (board[x-1][y-1] == '@') 
     {
@@ -92,6 +93,25 @@ char** EstablishBoard() // Make empty board
     return array;  // Return the pointer to the 2D array
 }
 
+Boat PlacePCShip(int size, char ** board) {
+    int x=0, y=0, ori=0;
+    srand(time(NULL));
+    x = rand() % 10 + 1;
+    y = rand() % 10 + 1;
+    std::cout << x << " " << y << " " << ori << "\n"; 
+    ori = rand() % 2;
+    Boat boat(x, y, size, ori);
+    while (checkBoat(boat, board) == 0) {
+        int x = rand() % 10 + 1;
+        int y = rand() % 10 + 1;
+        int ori = rand() % 2;
+        boat.setX(x);
+        boat.setY(y);
+        boat.setOri(ori);
+    }
+    return boat;
+}
+
 int main() {
 
     char** playerDefensiveBoard;
@@ -108,6 +128,18 @@ int main() {
     std::array<Boat, 4> boatArr =  {boat2, boat3, boat4, boat5};
 
     Player player(playerDefensiveBoard, playerAttackBoard, boatArr);
+
+    char** pcDefensiveBoard;
+    char** pcAttackBoard;
+
+    pcDefensiveBoard = EstablishBoard();
+    pcAttackBoard = EstablishBoard();
+
+    Boat pcBoat2 = PlacePCShip(2, pcDefensiveBoard);
+    Boat pcBoat3 = PlacePCShip(3, pcDefensiveBoard);
+    Boat pcBoat4 = PlacePCShip(4, pcDefensiveBoard);
+    Boat pcBoat5 = PlacePCShip(5, pcDefensiveBoard);
+    PrintBoard(pcDefensiveBoard);
 
     return 0;
 }

@@ -8,6 +8,7 @@ private:
     char** playerBoard;
     char** enemyBoard;
     std::array<Boat,4> boatArr;
+    int health = boatArr[0].getHealth() + boatArr[1].getHealth() + boatArr[2].getHealth() + boatArr[3].getHealth();
 
 public:
     Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatArr);
