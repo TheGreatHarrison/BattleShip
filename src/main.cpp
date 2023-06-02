@@ -147,18 +147,22 @@ int main() {
     int playerShot = 0;
     int x = 0, y = 0;
     int pcShot = 0;
-    // while(pc.getHealth() > 0 && player.getHealth())
-    // {
-        PrintBoard(pc.getPlayerBoard());
+    int i = 0;
+    while( i < 5) // pc.getHealth() > 0 && player.getHealth()
+    {
         std::cout << "Take your shot: \n";
-        std::cout << "Input x y coordinates; ";
+        std::cout << "Input x y coordinates: ";
         std::cin >> x >> y;
         std::cout << "\n";
         playerShot = player.takeShot(x, y, pc.getPlayerBoard());
         PrintBoard(player.getEnemyBoard());
-        //pcShot = pc.takeShot();
-
-    // }
+        srand(time(NULL));
+        x = rand() % 10 + 1;
+        y = rand() % 10 + 1;
+        pcShot = pc.takeShot(x, y, player.getPlayerBoard());
+        PrintBoard(player.getPlayerBoard());
+        i++;
+    }
 
     return 0;
 }

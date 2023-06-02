@@ -20,10 +20,12 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
     int Player::takeShot(int x, int y, char** DefensiveBoard) {
         char** board = this->getEnemyBoard();
         if (DefensiveBoard[y-1][x-1] == '@') {
+            DefensiveBoard[y-1][x-1] = 'X';
             board[y-1][x-1] = 'X';
             return 1;
         } else {
             board[y-1][x-1] = 'O';
+            DefensiveBoard[y-1][x-1] = 'O';
             return 0;
         }
         return 1;
