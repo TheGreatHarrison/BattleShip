@@ -40,7 +40,7 @@ int checkBoat (Boat boat, char** board, int pc)
         return 0;
     } else if (ori == 1 && (y+size > 9 || y < 1)) {
         return 0;
-    } else if (board[x-1][y-1] == '@') 
+    } else if (board[y-1][x-1] == '@') 
     {
         return 0 ;
     }
@@ -100,7 +100,6 @@ Boat PlacePCShip(int size, char ** board) {
     srand(time(NULL));
     x = rand() % 10 + 1;
     y = rand() % 10 + 1;
-    std::cout << x << " " << y << " " << ori << "\n"; 
     ori = rand() % 2;
     Boat boat(x, y, size, ori);
     while (checkBoat(boat, board, 1) == 0) {
@@ -145,7 +144,21 @@ int main() {
 
     Player pc(pcDefensiveBoard, pcAttackBoard, pcBoatArr);
 
-    // game play?
+    int playerShot = 0;
+    int x = 0, y = 0;
+    int pcShot = 0;
+    // while(pc.getHealth() > 0 && player.getHealth())
+    // {
+        PrintBoard(pc.getPlayerBoard());
+        std::cout << "Take your shot: \n";
+        std::cout << "Input x y coordinates; ";
+        std::cin >> x >> y;
+        std::cout << "\n";
+        playerShot = player.takeShot(x, y, pc.getPlayerBoard());
+        PrintBoard(player.getEnemyBoard());
+        //pcShot = pc.takeShot();
+
+    // }
 
     return 0;
 }

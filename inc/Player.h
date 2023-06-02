@@ -14,7 +14,7 @@ public:
     Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatArr);
 
     // Accessor methods
-    int takeShot();
+    int takeShot(int x, int y, char** DefensiveBoard);
     int getHealth();
     char** getPlayerBoard();
     char** getEnemyBoard();
