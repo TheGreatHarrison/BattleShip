@@ -157,7 +157,7 @@ int main() {
         playerShot = player.takeShot(x, y, pc.getPlayerBoard());
         while(playerShot == -1) 
         {
-            std::cout << "You already shot there!\n";
+            std::cout << "Out of bounds or you already shot there!\nTry again\n";
             std::cout << "Input different x y coordinates: ";
             std::cin >> x >> y;
             std::cout << "\n";
