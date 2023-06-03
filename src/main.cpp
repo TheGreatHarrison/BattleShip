@@ -163,6 +163,9 @@ int main() {
             std::cout << "\n";
             playerShot = player.takeShot(x, y, pc.getPlayerBoard());
         }
+        if (playerShot == 1) {
+            pc.reduceHealth();
+        }
 
         PrintBoard(player.getEnemyBoard());
         srand(time(NULL));
@@ -174,8 +177,17 @@ int main() {
             y = rand() % 10 + 1;
             pcShot = pc.takeShot(x, y, player.getPlayerBoard());
         }
+        if (pcShot == 1) {
+            player.reduceHealth();
+        }
 
         PrintBoard(player.getPlayerBoard());
+        std::cout << "\nplayer health";
+        std::cout << player.getHealth();
+        std::cout << "\n PC health";
+        std::cout <<pc.getHealth();
+        std::cout << "\n";
+
         i++;
     }
 

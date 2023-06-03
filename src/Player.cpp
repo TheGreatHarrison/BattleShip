@@ -44,3 +44,7 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
     int Player::getHealth() {
         return health;
     }
+
+    void Player::reduceHealth() {
+        health--;
+    }

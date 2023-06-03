@@ -8,7 +8,7 @@ private:
     char** playerBoard;
     char** enemyBoard;
     std::array<Boat,4> boatArr;
-    int health = boatArr[0].getHealth() + boatArr[1].getHealth() + boatArr[2].getHealth() + boatArr[3].getHealth();
+    int health = 2+3+4+5;
 
 public:
     Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatArr);
@@ -16,6 +16,7 @@ public:
     // Accessor methods
     int takeShot(int x, int y, char** DefensiveBoard);
     int getHealth();
+    void reduceHealth();
     char** getPlayerBoard();
     char** getEnemyBoard();
     int defendShot(int x, int y);
