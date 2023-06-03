@@ -110,6 +110,7 @@ Boat PlacePCShip(int size, char ** board) {
         boat.setY(y);
         boat.setOri(ori);
     }
+    PrintBoard(board);
     return boat;
 }
 
@@ -148,7 +149,8 @@ int main() {
     int x = 0, y = 0;
     int pcShot = 0;
     int i = 0;
-    while( i < 5) // pc.getHealth() > 0 && player.getHealth()
+    int gameover = 0;
+    while(!gameover) // pc.getHealth() > 0 && player.getHealth()
     {
         std::cout << "Take your shot: \n";
         std::cout << "Input x y coordinates: ";
@@ -182,14 +184,11 @@ int main() {
         }
 
         PrintBoard(player.getPlayerBoard());
-        std::cout << "\nplayer health";
-        std::cout << player.getHealth();
-        std::cout << "\n PC health";
-        std::cout <<pc.getHealth();
-        std::cout << "\n";
-
         i++;
-    }
 
+        if (pc.getHealth() <= 0 || player.getHealth() <= 0) {
+            gameover = 1;
+        }
+    }
     return 0;
 }
