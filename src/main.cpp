@@ -155,11 +155,26 @@ int main() {
         std::cin >> x >> y;
         std::cout << "\n";
         playerShot = player.takeShot(x, y, pc.getPlayerBoard());
+        while(playerShot == -1) 
+        {
+            std::cout << "You already shot there!\n";
+            std::cout << "Input different x y coordinates: ";
+            std::cin >> x >> y;
+            std::cout << "\n";
+            playerShot = player.takeShot(x, y, pc.getPlayerBoard());
+        }
+
         PrintBoard(player.getEnemyBoard());
         srand(time(NULL));
         x = rand() % 10 + 1;
         y = rand() % 10 + 1;
         pcShot = pc.takeShot(x, y, player.getPlayerBoard());
+        while(pcShot == -1) {
+            x = rand() % 10 + 1;
+            y = rand() % 10 + 1;
+            pcShot = pc.takeShot(x, y, player.getPlayerBoard());
+        }
+
         PrintBoard(player.getPlayerBoard());
         i++;
     }
