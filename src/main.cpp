@@ -190,5 +190,13 @@ int main() {
             gameover = 1;
         }
     }
+
+    // Work out the winner
+    if (pc.getHealth() == 0) {
+        std::cout << "YOU WIN!!!";
+    } else {
+        std::cout << "YOU LOST!!!";
+    }
+
     return 0;
 }
