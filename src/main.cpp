@@ -36,9 +36,9 @@ int checkBoat (Boat boat, char** board, int pc)
     ori = boat.getOri();
     size = boat.getSize();
 
-    if (ori == 0 && (x+size > 9 || x < 1)) {
+    if (ori == 1 && (y+size > 10 || x < 1)) {
         return 0;
-    } else if (ori == 1 && (y+size > 9 || y < 1)) {
+    } else if (ori == 0 && (x+size > 10 || y < 1)) {
         return 0;
     } else if (board[y-1][x-1] == '@') 
     {
@@ -98,8 +98,8 @@ char** EstablishBoard() // Make empty board
 Boat PlacePCShip(int size, char ** board) {
     int x=0, y=0, ori=0;
     srand(time(NULL));
-    x = rand() % 10 + 1;
-    y = rand() % 10 + 1;
+    x = rand() % 9 + 1;
+    y = rand() % 9 + 1;
     ori = rand() % 2;
     Boat boat(x, y, size, ori);
     while (checkBoat(boat, board, 1) == 0) {
