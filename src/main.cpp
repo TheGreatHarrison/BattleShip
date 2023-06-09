@@ -68,7 +68,7 @@ int checkBoat (Boat boat, char** board, int pc)
 Boat PlaceShip(int size, char** board)
 {
     int x=0,y=0,ori=0;
-    std::cout << "Place Boat " << size << ": \n";
+    std::cout << "Place Boat - Length " << size << ": \n";
     std::cout << "Input your X Y coord: ";
     std::cin >> x >> y;
     std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
@@ -110,7 +110,6 @@ Boat PlacePCShip(int size, char ** board) {
         boat.setY(y);
         boat.setOri(ori);
     }
-    PrintBoard(board);
     return boat;
 }
 
