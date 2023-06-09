@@ -71,8 +71,25 @@ Boat PlaceShip(int size, char** board)
     std::cout << "Place Boat - Length " << size << ": \n";
     std::cout << "Input your X Y coord: ";
     std::cin >> x >> y;
+    while(std::cin.fail()) 
+    {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Invalid input - Try again:\n";
+        std::cout << "Input your X Y coord: ";
+        std::cin >> x >> y;
+    }
     std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
     std::cin >> ori;
+    while(std::cin.fail()) 
+    {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cout << "Invalid input - Try again:\n";
+        std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
+        std::cin >> ori;
+    }
+
     Boat boat(x, y, size, ori);
     if (checkBoat(boat, board, 0) == 0)
     {
