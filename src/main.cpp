@@ -156,13 +156,21 @@ int main() {
         std::cin >> x >> y;
         std::cout << "\n";
         playerShot = player.takeShot(x, y, pc.getPlayerBoard());
-        while(playerShot == -1) 
+        while(playerShot == -1 || std::cin.fail()) 
         {
+            std::cin.clear();
+            std::cin.ignore();
             std::cout << "Out of bounds or you already shot there!\nTry again\n";
             std::cout << "Input different x y coordinates: ";
             std::cin >> x >> y;
             std::cout << "\n";
-            playerShot = player.takeShot(x, y, pc.getPlayerBoard());
+            if (x>10 || x<0 || y>10 || y<0)
+            {
+                playerShot = -1;
+            } else
+            {
+                playerShot = player.takeShot(x, y, pc.getPlayerBoard());
+            }
         }
         if (playerShot == 1) {
             pc.reduceHealth();
