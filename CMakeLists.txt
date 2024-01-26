@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES src/main.cpp src/Boat.cpp src/Player.cpp)
 
-add_executable(simple_example ${SOURCE_FILES})
+add_executable(battleships ${SOURCE_FILES})

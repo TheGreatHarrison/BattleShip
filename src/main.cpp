@@ -28,7 +28,7 @@ void PrintBoard(char** board)
     }
 }
 
-int checkBoat (Boat boat, char** board, int pc)
+int checkBoat(Boat boat, char** board, int pc)
 {
     int x=0, y=0, ori=0, size=0;
     x = boat.getX();
