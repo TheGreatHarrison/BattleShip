@@ -5,15 +5,18 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
     : playerBoard(playerBoard), enemyBoard(enemyBoard), boatArr(boatArr) {}
 
     // Accessor methods
-    char** Player::getPlayerBoard() {
+    char** Player::getPlayerBoard() 
+    {
         return playerBoard;
     }
 
-    char** Player::getEnemyBoard() {
+    char** Player::getEnemyBoard() 
+    {
         return enemyBoard;
     }
 
-    int Player::defendShot(int x, int y) { // TODO
+    int Player::defendShot(int x, int y) 
+    { // TODO
         return 1;
     }
 
@@ -28,7 +31,8 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
             DefensiveBoard[y-1][x-1] = 'X';
             board[y-1][x-1] = 'X';
             return 1; // Hit
-        } else {
+        } else 
+        {
             board[y-1][x-1] = 'O';
             DefensiveBoard[y-1][x-1] = 'O';
             return 0; // Miss
@@ -37,14 +41,17 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
 
     }
 
-    Boat getBoat(std::array<Boat,4> &boatArr, int number) {
+    Boat getBoat(std::array<Boat,4> &boatArr, int number) 
+    {
         return boatArr[number-2];
     }
 
-    int Player::getHealth() {
+    int Player::getHealth() 
+    {
         return health;
     }
 
-    void Player::reduceHealth() {
+    void Player::reduceHealth() 
+    {
         health--;
     }

@@ -1,7 +1,8 @@
 #pragma once
 
 
-class Game {
+class Game 
+{
 private:
 
 public:

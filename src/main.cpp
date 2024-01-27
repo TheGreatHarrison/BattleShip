@@ -15,13 +15,16 @@ void PrintBoard(char** board)
     }
     std::cout << "\n";
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i) 
+    {
 
         std::cout << i+1 << " "; //  Print the numbers along the left edge
-        if (i != 9) { // Odd spacing for when 2 char 10 is put on baord and it throws out the lines
+        if (i != 9) // Odd spacing for when 2 char 10 is put on baord and it throws out the lines
+        {
             std::cout << " ";
         }
-        for (int j = 0; j < 10; ++j) {
+        for (int j = 0; j < 10; ++j) 
+        {
             std::cout << board[i][j] << " "; 
         }
         std::cout << "\n";
@@ -36,9 +39,11 @@ int checkBoat(Boat boat, char** board, int pc)
     ori = boat.getOri();
     size = boat.getSize();
 
-    if (ori == 1 && (y+size > 10 || x < 1)) {
+    if (ori == 1 && (y+size > 10 || x < 1)) 
+    {
         return 0;
-    } else if (ori == 0 && (x+size > 10 || y < 1)) {
+    } else if (ori == 0 && (x+size > 10 || y < 1)) 
+    {
         return 0;
     } else if (board[y-1][x-1] == '@') 
     {
@@ -50,7 +55,8 @@ int checkBoat(Boat boat, char** board, int pc)
         if(ori == 0)
         {
             x++;
-        } else {
+        } else 
+        {
             y++;
         }
         if (board[y-1][x-1] == '@') 
@@ -59,7 +65,8 @@ int checkBoat(Boat boat, char** board, int pc)
         }
         board[y-1][x-1] = '@'; 
     }
-    if (pc == 0) {
+    if (pc == 0) 
+    {
         PrintBoard(board);
     }
     return 1;
@@ -79,7 +86,7 @@ Boat PlaceShip(int size, char** board)
         std::cout << "Input your X Y coord: ";
         std::cin >> x >> y;
     }
-    std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : ";
+    std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : \n";
     std::cin >> ori;
     while(std::cin.fail()) 
     {
@@ -95,7 +102,8 @@ Boat PlaceShip(int size, char** board)
     {
         std::cout << "Invalid Placement - Try again\n";
         return PlaceShip(size, board);
-    } else {
+    } else 
+    {
         return boat;
     }
 }
@@ -103,23 +111,27 @@ Boat PlaceShip(int size, char** board)
 char** EstablishBoard() // Make empty board 
 {
     char** array = new char*[10];  // Allocate memory for rows
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i) 
+    {
         array[i] = new char[10];  // Allocate memory for columns of each row
-        for (int j = 0; j < 10; ++j) {
+        for (int j = 0; j < 10; ++j) 
+        {
             array[i][j] = '~';
         }
     }
     return array;  // Return the pointer to the 2D array
 }
 
-Boat PlacePCShip(int size, char ** board) {
+Boat PlacePCShip(int size, char ** board) 
+{
     int x=0, y=0, ori=0;
     srand(time(NULL));
     x = rand() % 9 + 1;
     y = rand() % 9 + 1;
     ori = rand() % 2;
     Boat boat(x, y, size, ori);
-    while (checkBoat(boat, board, 1) == 0) {
+    while (checkBoat(boat, board, 1) == 0) 
+    {
         int x = rand() % 10 + 1;
         int y = rand() % 10 + 1;
         int ori = rand() % 2;
@@ -130,7 +142,8 @@ Boat PlacePCShip(int size, char ** board) {
     return boat;
 }
 
-int main() {
+int main() 
+{
 
     char** playerDefensiveBoard;
     char** playerAttackBoard;
@@ -189,36 +202,42 @@ int main() {
                 playerShot = player.takeShot(x, y, pc.getPlayerBoard());
             }
         }
-        if (playerShot == 1) {
+        if (playerShot == 1) 
+        {
             pc.reduceHealth();
         }
-
+        std::cout << "     Offensive Map \n";
         PrintBoard(player.getEnemyBoard());
         srand(time(NULL));
         x = rand() % 10 + 1;
         y = rand() % 10 + 1;
         pcShot = pc.takeShot(x, y, player.getPlayerBoard());
-        while(pcShot == -1) {
+        while(pcShot == -1) 
+        {
             x = rand() % 10 + 1;
             y = rand() % 10 + 1;
             pcShot = pc.takeShot(x, y, player.getPlayerBoard());
         }
-        if (pcShot == 1) {
+        if (pcShot == 1) 
+        {
             player.reduceHealth();
         }
-
+        std::cout << "     Defensive Map \n";
         PrintBoard(player.getPlayerBoard());
         i++;
 
-        if (pc.getHealth() <= 0 || player.getHealth() <= 0) {
+        if (pc.getHealth() <= 0 || player.getHealth() <= 0) 
+        {
             gameover = 1;
         }
     }
 
     // Work out the winner
-    if (pc.getHealth() == 0) {
+    if (pc.getHealth() == 0) 
+    {
         std::cout << "YOU WIN!!!";
-    } else {
+    } else 
+    {
         std::cout << "YOU LOST!!!";
     }
 

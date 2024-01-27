@@ -4,6 +4,7 @@
 Game::Game()
     : {}
 
-    void startGame() {
+    void startGame() 
+    {
         std::cout << "Welcome to Battle Ships\n";
     }

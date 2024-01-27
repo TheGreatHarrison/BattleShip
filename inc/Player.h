@@ -3,7 +3,8 @@
 #include <array>
 
 
-class Player {
+class Player 
+{
 private:
     char** playerBoard;
     char** enemyBoard;
