@@ -2,7 +2,8 @@
 #include "../inc/Player.h"
 
 Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatArr)
-    : playerBoard(playerBoard), enemyBoard(enemyBoard), boatArr(boatArr) {}
+    : playerBoard(playerBoard), enemyBoard(enemyBoard), boatArr(boatArr) 
+    {}
 
     // Accessor methods
     char** Player::getPlayerBoard() 
@@ -20,7 +21,8 @@ Player::Player(char** playerBoard, char** enemyBoard, std::array<Boat,4> &boatAr
         return 1;
     }
 
-    int Player::takeShot(int x, int y, char** DefensiveBoard) {
+    int Player::takeShot(int x, int y, char** DefensiveBoard) 
+    {
         char** board = this->getEnemyBoard();
         if (x <= 0 || y <= 0 || x > 10 || y > 10 ||
         DefensiveBoard[y-1][x-1] == 'O' || DefensiveBoard[y-1][x-1] == 'X') 

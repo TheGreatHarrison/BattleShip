@@ -77,6 +77,8 @@ Boat PlaceShip(int size, char** board)
     int x=0,y=0,ori=0;
     std::cout << "Place Boat - Length " << size << ": \n";
     std::cout << "Input your X Y coord: ";
+    std::cin.clear();
+    std::cin.ignore();
     std::cin >> x >> y;
     while(std::cin.fail()) 
     {
@@ -87,6 +89,8 @@ Boat PlaceShip(int size, char** board)
         std::cin >> x >> y;
     }
     std::cout <<"Orientation: \nVertical - 1  Horizontal - 0 : \n";
+    std::cin.clear();
+    std::cin.ignore();
     std::cin >> ori;
     while(std::cin.fail()) 
     {
@@ -147,17 +151,18 @@ int main()
 
     char** playerDefensiveBoard;
     char** playerAttackBoard;
-    playerDefensiveBoard = EstablishBoard();
-    playerAttackBoard = EstablishBoard();
+    playerDefensiveBoard = EstablishBoard();    // Construct empty Board to be populated
+    playerAttackBoard = EstablishBoard();       // Construct empty Board
     
     printf("Welcome to Battle Ships\n");
-    printf("Place your boats\n");
-    Boat boat2 = PlaceShip(2, playerDefensiveBoard);
-    Boat boat3 = PlaceShip(3, playerDefensiveBoard);
-    Boat boat4 = PlaceShip(4, playerDefensiveBoard);
-    Boat boat5 = PlaceShip(5, playerDefensiveBoard);
-    std::array<Boat, 4> boatArr =  {boat2, boat3, boat4, boat5};
 
+    // Place player Boats
+    printf("Place your boats\n");
+    std::array<Boat, 4> boatArr;
+    for (int j = 2 ; j <= 5 ; j++)
+    {
+        boatArr[j-2] = PlaceShip(j, playerDefensiveBoard);
+    }
     Player player(playerDefensiveBoard, playerAttackBoard, boatArr);
 
     char** pcDefensiveBoard;
@@ -166,11 +171,12 @@ int main()
     pcDefensiveBoard = EstablishBoard();
     pcAttackBoard = EstablishBoard();
 
-    Boat pcBoat2 = PlacePCShip(2, pcDefensiveBoard);
-    Boat pcBoat3 = PlacePCShip(3, pcDefensiveBoard);
-    Boat pcBoat4 = PlacePCShip(4, pcDefensiveBoard);
-    Boat pcBoat5 = PlacePCShip(5, pcDefensiveBoard);
-    std::array<Boat, 4> pcBoatArr =  {pcBoat2, pcBoat3, pcBoat4, pcBoat5};
+    // Place pc boats
+    std::array<Boat, 4> pcBoatArr;
+    for (int j = 2 ; j <= 5 ; j++) 
+    {
+        pcBoatArr[j-2] = PlacePCShip(j, pcDefensiveBoard);
+    }
 
     Player pc(pcDefensiveBoard, pcAttackBoard, pcBoatArr);
 
@@ -183,6 +189,8 @@ int main()
     {
         std::cout << "Take your shot: \n";
         std::cout << "Input x y coordinates: ";
+        std::cin.clear();
+        std::cin.ignore();
         std::cin >> x >> y;
         std::cout << "\n";
         playerShot = player.takeShot(x, y, pc.getPlayerBoard());
@@ -208,6 +216,8 @@ int main()
         }
         std::cout << "     Offensive Map \n";
         PrintBoard(player.getEnemyBoard());
+
+        // pc player takes a shot
         srand(time(NULL));
         x = rand() % 10 + 1;
         y = rand() % 10 + 1;
@@ -222,10 +232,12 @@ int main()
         {
             player.reduceHealth();
         }
+
         std::cout << "     Defensive Map \n";
         PrintBoard(player.getPlayerBoard());
         i++;
 
+        // Check game status
         if (pc.getHealth() <= 0 || player.getHealth() <= 0) 
         {
             gameover = 1;

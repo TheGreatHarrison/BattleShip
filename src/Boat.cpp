@@ -1,6 +1,9 @@
 #include <iostream>
 #include "../inc/boat.h"
 
+// Default constructor
+Boat::Boat() : x(0), y(0), size(0), ori(0), health(0) {}
+
 Boat::Boat(int x, int y, int size, int ori)
     : x(x), y(y), size(size), ori(ori) {}
 

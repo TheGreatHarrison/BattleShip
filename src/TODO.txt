@@ -1,0 +1,23 @@
+TODO:
+
+Make  game class that could own players and game fucntions? or just game fucntions
+
+make AI take shots if it makes a hit maybe use an array of all posible shots then get it to shot up down left right 
+could use a bool if bool = 1 save cord and then randomly go up down left right
+
+
+
+tidy up
+
+Add win and end messages  etc - tidy up
+
+maybe try make a game class
+
+fix build system make it run on mutiple systems
+
+On inputs change boat placement to take all three at once,
+    - clear inputs before taking more inputs
+
+score board? count number of turns? save it to data that persists?
+
+change arrays to vectors instead

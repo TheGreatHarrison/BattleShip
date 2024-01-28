@@ -10,6 +10,7 @@ private:
     int health;
 
 public:
+    Boat();
     Boat(int x, int y, int size, int ori);
 
     // Accessor methods
